@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "name": "backend-coder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/desafio2/desafio2.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanGentta/BackEnd-Coder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanGentta/BackEnd-Coder/issues"
+  },
+  "homepage": "https://github.com/IvanGentta/BackEnd-Coder#readme"
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Milk",
+    "description": "It's milk from a cow",
+    "price": 20000,
+    "thumbnail": "Milk photo",
+    "stock": 100,
+    "code": "abc123",
+    "id": 1
+  }
+]
