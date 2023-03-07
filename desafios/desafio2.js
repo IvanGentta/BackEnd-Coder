@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 
-class ProductManager {
+export default class ProductManager {
   constructor(ruta) {
     this.products;
     this.ruta = ruta;
@@ -89,7 +89,7 @@ class ProductManager {
 }
 
 // ** PRUEBAS **
-const mercado = new ProductManager("./desafio2/static/mercado.txt");
+const mercado = new ProductManager("./desafios/static/mercado.json");
 console.log(await mercado.getProducts());
 
 await mercado.addProduct(
@@ -98,6 +98,22 @@ await mercado.addProduct(
   20,
   "Milk photo",
   "abc123",
+  100
+);
+await mercado.addProduct(
+  "Milk",
+  "It's milk from a cow",
+  20,
+  "Milk photo",
+  "abc124",
+  100
+);
+await mercado.addProduct(
+  "Milk",
+  "It's milk from a cow",
+  20,
+  "Milk photo",
+  "abc128",
   100
 );
 

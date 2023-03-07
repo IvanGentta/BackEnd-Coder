@@ -7,5 +7,14 @@
     "stock": 100,
     "code": "abc123",
     "id": 1
+  },
+  {
+    "title": "Wine",
+    "description": "It's red Wine",
+    "price": 30,
+    "thumbnail": "Wine photo",
+    "code": "abc456",
+    "stock": 100,
+    "id": 4
   }
 ]
