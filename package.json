@@ -3,7 +3,7 @@
   "name": "backend-coder",
   "version": "1.0.0",
   "description": "",
-  "main": "clases/express.js",
+  "main": "./desafios/desafio4/desafio4.js",
   "scripts": {
     "start": "node ."
   },

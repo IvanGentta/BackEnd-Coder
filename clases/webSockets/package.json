@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "websockets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/webSocket.js",
+  "scripts": {
+    "test": "nodemon -e 'js,html' webSocket.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-handlebars": "^7.0.2",
+    "socket.io": "^4.6.1"
+  }
+}
