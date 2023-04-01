@@ -3,7 +3,7 @@
   "name": "backend-coder",
   "version": "1.0.0",
   "description": "",
-  "main": "./clases/routerAndMoulter/routerAndMoulter.js",
+  "main": "./clases/mongoDB/mongoose.js",
   "scripts": {
     "start": "node ."
   },
