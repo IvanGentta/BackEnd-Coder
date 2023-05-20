@@ -5,12 +5,14 @@ import { engine } from "express-handlebars";
 import { Server as SocketIOServer, Socket } from "socket.io";
 import { FileMAnager } from "./FileManager.js";
 
-const mensajesManager = new FileMAnager("./localStorage/mensajes.json");
+const mensajesManager = new FileMAnager(
+  "./clases/webSockets/localStorage/mensajes.json"
+);
 
 const app = express();
 
 app.engine("handlebars", engine());
-app.set("views", "./views");
+app.set("views", "../views");
 app.set("view engine", "handlebars");
 
 app.use(express.static("./public"));
@@ -26,25 +28,30 @@ const io = new SocketIOServer(httpServer);
 io.on("connection", async (clientSocket) => {
   console.log(`nuevo cliente conectado, id #${clientSocket.id}`);
   //elejis el nombre del evento y podes enviar lo que se pueda serializar o que se pueda transformar en string
-  clientSocket.emit("mensajito", { hola: "mundo" });
+  // clientSocket.emit("mensajito", { hola: "mundo" });
 
   //controller de nuevos mensajes
   clientSocket.on("nuevoMensaje", async (mensaje) => {
-    console.log(`${clientSocket.id} dice:`);
-    console.log(mensaje);
-    await mensajesManager.guardarCosa({
-      fecha: new Date().toLocaleString(),
-      ...mensaje,
-    });
-    io.sockets.emit("actualizarMensajes", await mensajesManager.buscarCosas());
+    await mensajesManager.guardarCosa(mensaje);
+    const mensajes = await mensajesManager.buscarCosas();
+    const mensajesParaFront = mensajes.map((m) => ({
+      ...m,
+      fecha: new Date(m.fecha).toLocaleTimeString(),
+    }));
+    io.sockets.emit("actualizarMensajes", mensajesParaFront);
   });
-  io.sockets.emit("actualizarMensajes", await mensajesManager.buscarCosas());
+
+  const mensajes = await mensajesManager.buscarCosas();
+  const mensajesParaFront = mensajes.map((m) => ({
+    ...m,
+    fecha: new Date(m.fecha).toLocaleTimeString(),
+  }));
+  io.sockets.emit("actualizarMensajes", mensajesParaFront);
 });
 
 app.get("/", async (req, res) => {
   const mensajes = await mensajesManager.buscarCosas();
   res.render("mensajes", {
-    hayMensajes: mensajes.length > 0,
-    mensajes,
+    pageTitle: "Chat",
   });
 });
